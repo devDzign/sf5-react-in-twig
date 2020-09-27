@@ -1,8 +1,10 @@
 {
     "devDependencies": {
+        "@babel/preset-react": "7.0.0",
         "@symfony/webpack-encore": "^0.30.0",
         "bootstrap": "^4.5.2",
         "core-js": "^3.0.0",
+        "eslint": "^7.10.0",
         "jquery": "^3.5.1",
         "node-sass": "^4.14.1",
         "popper.js": "^1.16.1",
@@ -17,5 +19,14 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
+    },
+    "dependencies": {
+        "prop-types": "^15.7.2",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-redux": "^7.2.1",
+        "redux": "^4.0.5",
+        "redux-logger": "^3.0.6",
+        "redux-thunk": "^2.3.0"
     }
 }
