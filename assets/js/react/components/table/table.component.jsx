@@ -6,7 +6,7 @@ import TableForm from "./table-form.component";
 const Table = (props) => {
 
     let heart = '';
-
+     const {isLoaded} = props
     const {
         withHeart,
         onRowClick,
@@ -20,6 +20,7 @@ const Table = (props) => {
     }
 
     const calculateTotalWeightLifted = repLogs => repLogs.reduce((total, log) => total + log.totalWeightLifted, 0);
+
 
     return (
         <>
@@ -38,6 +39,7 @@ const Table = (props) => {
                     onRowClick={onRowClick}
                     highlightedRowId={highlightedRowId}
                     repLogs={repLogs}
+                    isLoaded={isLoaded}
                 />
                 <tfoot>
                 <tr>

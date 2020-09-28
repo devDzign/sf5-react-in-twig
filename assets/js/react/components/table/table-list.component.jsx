@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const TableList = (props) => {
 
-    const { onRowClick, highlightedRowId, repLogs } = props
+    const { onRowClick, highlightedRowId, repLogs, isLoaded } = props
 
     const repLogElements = repLogs.map((repLog) => {
         return (
@@ -23,6 +23,16 @@ const TableList = (props) => {
             </tr>
         )
     });
+
+    if (!isLoaded) {
+        return (
+            <tbody>
+            <tr>
+                <td colSpan="4" className="text-center">Loading...</td>
+            </tr>
+            </tbody>
+        );
+    }
 
     return (
         <>

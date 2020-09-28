@@ -28,12 +28,15 @@ class ReactController extends AbstractController
     }
 
     /**
-     * @Route("/test-2", name="test-2")
+     * @Route("/items", name="test-2")
      */
     public function test2()
     {
-        return $this->render('react/index.html.twig', [
-            'controller_name' => 'ReactController',
-        ]);
+       return $this->json([
+        ['id'=>1, 'reps'=> 25, 'itemLabel'=> 'Mourad', 'totalWeightLifted'=> 112.5],
+        ['id'=>2, 'reps'=> 25, 'itemLabel'=> 'Chabour', 'totalWeightLifted'=> 112.5],
+        ['id'=>3, 'reps'=> 25, 'itemLabel'=> 'YAsmina', 'totalWeightLifted'=> 112.5]
+
+    ]);
     }
 }
