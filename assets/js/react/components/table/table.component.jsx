@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TableList from "./table-list.component";
+import PropTypes from "prop-types";
 
 const Table = (props) => {
 
@@ -85,3 +86,10 @@ const Table = (props) => {
 };
 
 export default Table;
+
+
+Table.propTypes = {
+    highlightedRowId: PropTypes.any,
+    onRowClick: PropTypes.func.isRequired,
+    withHeart: PropTypes.bool
+};

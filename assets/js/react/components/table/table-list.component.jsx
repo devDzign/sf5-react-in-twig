@@ -1,6 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types'
+
+
+
 
 const TableList = (props) => {
+
 
     const { onRowClick, highlightedRowId } = props
 
@@ -37,3 +42,9 @@ const TableList = (props) => {
 };
 
 export default TableList;
+
+
+TableList.propTypes = {
+    highlightedRowId: PropTypes.any,
+    onRowClick: PropTypes.func.isRequired
+};
