@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 const TableList = (props) => {
 
-    const [highlightedRowId, setHighlightedRowId] = useState(null);
+    const { onRowClick, highlightedRowId } = props
 
     const repLogs = [
         {id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5},
@@ -10,16 +10,12 @@ const TableList = (props) => {
         {id: 8, reps: 4, itemLabel: 'Big Fat Cat', totalWeightLifted: 72}
     ];
 
-    const handleRowClick = id => {
-         setHighlightedRowId(id)
-    }
-
     const repLogElements = repLogs.map((repLog) => {
         return (
             <tr
                 key={repLog.id}
                 className={highlightedRowId === repLog.id ? 'table-primary' : ''}
-                onClick={() => handleRowClick(repLog.id)}
+                onClick={() => onRowClick(repLog.id)}
             >
                 <td>{repLog.itemLabel}</td>
                 <td>{repLog.reps}</td>

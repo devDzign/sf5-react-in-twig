@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TableList from "./table-list.component";
 
 const Table = (props) => {
 
     let heart = '';
 
-    if (props.withHeart) {
+    const { withHeart, onRowClick, highlightedRowId } = props
+
+    if (withHeart) {
         heart = <span>❤</span>;
     }
 
@@ -21,7 +23,11 @@ const Table = (props) => {
                     <th>&nbsp;</th>
                 </tr>
                 </thead>
-               <TableList/>
+
+               <TableList
+                   onRowClick={onRowClick}
+                   highlightedRowId={highlightedRowId}
+               />
                 <tfoot>
                 <tr>
                     <td>&nbsp;</td>
