@@ -1,19 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-
-
-
 const TableList = (props) => {
 
-
-    const { onRowClick, highlightedRowId } = props
-
-    const repLogs = [
-        {id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5},
-        {id: 2, reps: 10, itemLabel: 'Big Fat Cat', totalWeightLifted: 180},
-        {id: 8, reps: 4, itemLabel: 'Big Fat Cat', totalWeightLifted: 72}
-    ];
+    const { onRowClick, highlightedRowId, repLogs } = props
 
     const repLogElements = repLogs.map((repLog) => {
         return (
@@ -25,7 +15,11 @@ const TableList = (props) => {
                 <td>{repLog.itemLabel}</td>
                 <td>{repLog.reps}</td>
                 <td>{repLog.totalWeightLifted}</td>
-                <td>...</td>
+                <td>
+                    <a href="#">
+                        <span className="fa fa-trash"></span>
+                    </a>
+                </td>
             </tr>
         )
     });
@@ -46,5 +40,6 @@ export default TableList;
 
 TableList.propTypes = {
     highlightedRowId: PropTypes.any,
-    onRowClick: PropTypes.func.isRequired
+    onRowClick: PropTypes.func.isRequired,
+    repLogs: PropTypes.array.isRequired
 };

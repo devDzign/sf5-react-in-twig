@@ -1,16 +1,25 @@
 import React from 'react';
 import TableList from "./table-list.component";
 import PropTypes from "prop-types";
+import TableForm from "./table-form.component";
 
 const Table = (props) => {
 
     let heart = '';
 
-    const { withHeart, onRowClick, highlightedRowId } = props
+    const {
+        withHeart,
+        onRowClick,
+        highlightedRowId,
+        repLogs,
+        onAddRepLog
+    } = props
 
     if (withHeart) {
         heart = <span>❤</span>;
     }
+
+    const calculateTotalWeightLifted = repLogs => repLogs.reduce((total, log) => total + log.totalWeightLifted, 0);
 
     return (
         <>
@@ -25,62 +34,24 @@ const Table = (props) => {
                 </tr>
                 </thead>
 
-               <TableList
-                   onRowClick={onRowClick}
-                   highlightedRowId={highlightedRowId}
-               />
+                <TableList
+                    onRowClick={onRowClick}
+                    highlightedRowId={highlightedRowId}
+                    repLogs={repLogs}
+                />
                 <tfoot>
                 <tr>
                     <td>&nbsp;</td>
                     <th>Total</th>
-                    <th>TODO</th>
+                    <th>{calculateTotalWeightLifted(repLogs)}</th>
                     <td>&nbsp;</td>
                 </tr>
                 </tfoot>
             </table>
 
-            <form
-                className="form-inline js-new-rep-log-form"
-                noValidate
-                data-url="{{ path('rep_log_new') }}"
-            >
-                <div className="form-group">
-                    <label className="sr-only control-label required"
-                           htmlFor="rep_log_item">
-                        What did you lift?
-                    </label>
-                    <select id="rep_log_item"
-                            name="item"
-                            required="required"
-                            className="form-control">
-                        <option value="">What did you
-                            lift?
-                        </option>
-                        <option value="cat">Cat</option>
-                        <option value="fat_cat">Big Fat Cat</option>
-                        <option value="laptop">My Laptop</option>
-                        <option value="coffee_cup">Coffee Cup</option>
-                    </select>
-
-                </div>
-                &ensp;
-                <div className="form-group">
-                    <label className="sr-only control-label required"
-                           htmlFor="rep_log_reps">
-                        How many times?
-                    </label>
-                    <input
-                        type="number" id="rep_log_reps"
-                        name="reps" required="required"
-                        placeholder="How many times?"
-                        className="form-control"
-                    />
-                </div>
-                &ensp;
-                <button type="submit" className="btn btn-primary">
-                    I Lifted it!
-                </button>
-            </form>
+            <TableForm
+                onAddRepLog={onAddRepLog}
+            />
         </>
     );
 };
@@ -91,5 +62,6 @@ export default Table;
 Table.propTypes = {
     highlightedRowId: PropTypes.any,
     onRowClick: PropTypes.func.isRequired,
-    withHeart: PropTypes.bool
+    withHeart: PropTypes.bool,
+    repLogs: PropTypes.array.isRequired
 };
