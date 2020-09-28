@@ -5,20 +5,18 @@
 {% block body %}
   <div class="container-fluid">
       <div class="row mt-5">
-          <div class="col-6" id="component-text">
+          <div class="col-md-10" id="component-table"></div>
+          <div class="col-md-2" id="component-text">
 
           </div>
-          <div class="col-6">
-              <button
-                      type="button"
-                      class="btn btn-lg btn-danger"
-                      data-toggle="popover"
-                      title="Popover title"
-                      data-content="And here's some amazing content. It's very engaging. Right?"
-              >
-                  Click to toggle popover
-              </button>
-          </div>
+
       </div>
   </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('hello') }}
+    {{ encore_entry_script_tags('table') }}
+{% endblock %}
+

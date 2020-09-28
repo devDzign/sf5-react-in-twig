@@ -27,6 +27,8 @@ Encore
     // .addEntry('rep_log', './assets/js/rep_log.js')
     // .addEntry('login', './assets/js/login.js')
     .addEntry('app', './assets/js/app.js')
+    .addEntry('hello', './assets/js/react/pages/hello/hello.page.jsx')
+    .addEntry('table', './assets/js/react/pages/table/table.page.jsx')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
